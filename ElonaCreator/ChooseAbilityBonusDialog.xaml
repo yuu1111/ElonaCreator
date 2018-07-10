@@ -1,0 +1,24 @@
+﻿<Window x:Class="ElonaCreator.ChooseAbilityBonusDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElonaCreator"
+        mc:Ignorable="d"
+        Title="Ability Bonus" Height="450" Width="800">
+    <Window.DataContext>
+        <local:ChooseAbilityBonusViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <DockPanel>
+            <DockPanel Margin="0,10,0,10" DockPanel.Dock="Top">
+                <CheckBox IsChecked="{Binding SearchesFromSpell, Mode=TwoWay}" Content="Spell" Margin="10,0,10,0" DockPanel.Dock="Right"/>
+                <CheckBox IsChecked="{Binding SearchesFromSkill, Mode=TwoWay}" Content="Skill" Margin="10,0,10,0" DockPanel.Dock="Right"/>
+                <CheckBox IsChecked="{Binding SearchesFromResistance, Mode=TwoWay}" Content="Resistance" Margin="10,0,10,0" DockPanel.Dock="Right"/>
+                <CheckBox IsChecked="{Binding SearchesFromBasicAttribute, Mode=TwoWay}" Content="Basic attribute" Margin="10,0,10,0" DockPanel.Dock="Right"/>
+                <TextBox Text="{Binding SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Left" Margin="10,0,10,0"/>
+            </DockPanel>
+            <DataGrid DockPanel.Dock="Bottom" ItemsSource="{Binding Candidates}" ColumnWidth="Auto" CanUserAddRows="False"/>
+        </DockPanel>
+    </Grid>
+</Window>

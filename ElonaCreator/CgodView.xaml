@@ -1,0 +1,181 @@
+﻿<UserControl x:Class="ElonaCreator.CgodView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ElonaCreator"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <local:CgodViewModel x:Name="cgodViewModel"/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.Resources>
+            <local:Int2StringConverter x:Key="Int2StringConverter"/>
+        </Grid.Resources>
+        <TabControl Height="auto" Width="auto">
+            <TabItem Header="Basic">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Author Name(Japanese)" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Optional" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    </StackPanel>
+                    <TextBox HorizontalAlignment="Left" Height="auto" Margin="60,0,0,0" TextWrapping="Wrap" Text="{Binding Cgod.AuthorJapanese, Mode=TwoWay}" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+                    <StackPanel Orientation="Horizontal" Grid.Row="2">
+                        <Label Content="Author Name(English)" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Top" Grid.Row="2"/>
+                        <Label Content="Optional" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    </StackPanel>
+                    <TextBox HorizontalAlignment="Left" Height="auto" Margin="60,0,0,0" TextWrapping="Wrap" Text="{Binding Cgod.AuthorEnglish, Mode=TwoWay}" VerticalAlignment="Top" Width="120" Grid.Row="3"/>
+                    <StackPanel Orientation="Horizontal" Grid.Row="4">
+                        <Label Content="Full Name(Japanese)" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Top" Grid.Row="4"/>
+                        <Label Content="Optional" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    </StackPanel>
+                    <TextBox HorizontalAlignment="Left" Height="auto" Margin="60,0,0,0" TextWrapping="Wrap" Text="{Binding Cgod.FullNameJapanese, Mode=TwoWay}" VerticalAlignment="Top" Width="120" Grid.Row="5"/>
+                    <StackPanel Orientation="Horizontal" Grid.Row="6">
+                        <Label Content="Full Name(English)" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Top" Grid.Row="6"/>
+                        <Label Content="Required" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    </StackPanel>
+                    <TextBox HorizontalAlignment="Left" Height="auto" Margin="60,0,0,0" TextWrapping="Wrap" Text="{Binding Cgod.FullNameEnglish, Mode=TwoWay}" VerticalAlignment="Top" Width="120" Grid.Row="7"/>
+                    <StackPanel Orientation="Horizontal" Grid.Row="8">
+                        <Label Content="Short Name(Japanese)" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Top" Grid.Row="8"/>
+                        <Label Content="Optional" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    </StackPanel>
+                    <TextBox HorizontalAlignment="Left" Height="auto" Margin="60,0,0,0" TextWrapping="Wrap" Text="{Binding Cgod.ShortNameJapanese, Mode=TwoWay}" VerticalAlignment="Top" Width="120" Grid.Row="9"/>
+                    <StackPanel Orientation="Horizontal" Grid.Row="10">
+                        <Label Content="Short Name(English)" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Top" Grid.Row="10"/>
+                        <Label Content="Required" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    </StackPanel>
+                    <TextBox HorizontalAlignment="Left" Height="auto" Margin="60,0,0,0" TextWrapping="Wrap" Text="{Binding Cgod.ShortNameEnglish, Mode=TwoWay}" VerticalAlignment="Top" Width="120" Grid.Row="11"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabItem" Header="Offering">
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel>
+                        <TextBlock TextWrapping="Wrap" Text="The god's favors. You can specify item category, item subcategory, and any item ID. Recommend that you specify corpse as offering."></TextBlock>
+                        <DataGrid VerticalAlignment="Top" ItemsSource="{Binding Cgod.Offerings}" AutoGenerateColumns="False" Margin="0,20,0,0" ColumnWidth="Auto" CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Header="Offering">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="{Binding Text, Mode=OneWay}" CommandParameter="{Binding}" Command="{Binding DataContext.EditOffering, ElementName=tabItem}" BorderThickness="0" Background="#00000000" Padding="0"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <Button Content="Clear" Width="120" VerticalAlignment="Bottom" Command="{Binding ClearOfferings}"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Ability Bonus">
+                <TabItem.Resources>
+                    <CollectionViewSource x:Key="AbilityBonusRanks" Source="{Binding AbilityBonusRanks}"/>
+                </TabItem.Resources>
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel>
+                        <TextBlock TextWrapping="Wrap" Text="The god's ability bonuses. You can specify stats, resistances, skills, and spells."></TextBlock>
+                        <DataGrid VerticalAlignment="Top" ItemsSource="{Binding Cgod.AbilityBonuses}" AutoGenerateColumns="False" Margin="0,20,0,0" ColumnWidth="Auto" CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Header="Ability">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="{Binding Text, Mode=OneWay}" CommandParameter="{Binding}" Command="{Binding DataContext.EditAbilityBonus, ElementName=tabItem}" BorderThickness="0" Background="#00000000" Padding="0"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Rank">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ComboBox ItemsSource="{Binding Source={StaticResource AbilityBonusRanks}}" SelectedValuePath="Rank" DisplayMemberPath="Description" SelectedValue="{Binding Rank}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <Button Content="Clear" Width="120" VerticalAlignment="Bottom" Command="{Binding ClearAbilityBonuses}"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Food Bonus">
+                <TabItem.Resources>
+                    <CollectionViewSource x:Key="FoodBonusRanks" Source="{Binding FoodBonusRanks}"/>
+                </TabItem.Resources>
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel>
+                        <TextBlock TextWrapping="Wrap" Text="The bonuses of food blessed by the god. You can specify stats, resistances, skills, and spells. Ylva seven gods have 3 rank bonuses."></TextBlock>
+                        <DataGrid VerticalAlignment="Top" ItemsSource="{Binding Cgod.FoodBonuses}" AutoGenerateColumns="False" Margin="0,20,0,0" ColumnWidth="Auto" CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Header="Ability">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="{Binding Text, Mode=OneWay}" CommandParameter="{Binding}" Command="{Binding DataContext.EditAbilityBonus, ElementName=tabItem}" BorderThickness="0" Background="#00000000" Padding="0"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Rank">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Text="{Binding Rank, Converter={StaticResource Int2StringConverter}}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <Button Content="Clear" Width="120" VerticalAlignment="Bottom" Command="{Binding ClearFoodBonuses}"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Special Food Bonus">
+                <TabItem.Resources>
+                    <CollectionViewSource x:Key="SpecialFoodBonusRanks" Source="{Binding FoodBonusRanks}"/>
+                </TabItem.Resources>
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel>
+                        <TextBlock TextWrapping="Wrap" Text="The bonuses of special steamed meat buns blessed by the god. You can specify stats, resistances, skills, and spells. Ylva seven gods have 150 rank bonuses for normal stats and 1600 rank bonuses for special stats like life/mana/speed."></TextBlock>
+                        <DataGrid VerticalAlignment="Top" ItemsSource="{Binding Cgod.SpecialFoodBonuses}" AutoGenerateColumns="False" Margin="0,20,0,0" ColumnWidth="Auto" CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Header="Ability">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="{Binding Text, Mode=OneWay}" CommandParameter="{Binding}" Command="{Binding DataContext.EditAbilityBonus, ElementName=tabItem}" BorderThickness="0" Background="#00000000" Padding="0"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Rank">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Text="{Binding Rank, Converter={StaticResource Int2StringConverter}}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <Button Content="Clear" Width="120" VerticalAlignment="Bottom" Command="{Binding ClearSpecialFoodBonuses}"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Special Power">
+            </TabItem>
+            <TabItem Header="Text">
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>
