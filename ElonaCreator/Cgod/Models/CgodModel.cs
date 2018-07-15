@@ -18,25 +18,6 @@ namespace ElonaCreator
         #endregion
 
 
-        /*
-        %Elona Custom God
-
-author. "作者"
-author_en. "作者"
-name. "Jure of Healing,癒しのジュア"
-shortname. "Jure,ジュア"
-filter. ""
-give. "204,77001"
-bonus. "150016,1540018,1550010,1610009,1840008,1740010,1640012"
-specialpower. "623,{faith}"
-specialpoweralias.
-foodbonus.
-specialfoodbonus.
-miracle0. / miracle1.
-*/
-
-        public string FoodBonus;
-        public string SpecialFoodBonus;
         public string Miracle0;
         public string Miracle1;
 
