@@ -18,31 +18,6 @@ namespace ElonaCreator
         #endregion
 
 
-        /*
-        %Elona Custom God
-
-author. "作者"
-author_en. "作者"
-name. "Jure of Healing,癒しのジュア"
-shortname. "Jure,ジュア"
-filter. ""
-give. "204,77001"
-bonus. "150016,1540018,1550010,1610009,1840008,1740010,1640012"
-specialpower. "623,{faith}"
-specialpoweralias.
-foodbonus.
-specialfoodbonus.
-miracle0. / miracle1.
-*/
-
-        public string SpecialPower;
-        public string SpecialPowerAlias;
-        public string FoodBonus;
-        public string SpecialFoodBonus;
-        public string Miracle0;
-        public string Miracle1;
-
-
 
         private string _authorJapanese = "";
         public string AuthorJapanese
@@ -145,7 +120,24 @@ miracle0. / miracle1.
         public ObservableCollection<AbilityBonusModel> AbilityBonuses { get; set; } = new ObservableCollection<AbilityBonusModel>();
         public ObservableCollection<AbilityBonusModel> FoodBonuses { get; set; } = new ObservableCollection<AbilityBonusModel>();
         public ObservableCollection<AbilityBonusModel> SpecialFoodBonuses { get; set; } = new ObservableCollection<AbilityBonusModel>();
+        public ObservableCollection<MiracleModel> Miracles { get; set; } = new ObservableCollection<MiracleModel>();
 
+
+
+
+        private SpecialPowerModel _specialPower = new SpecialPowerModel();
+        public SpecialPowerModel SpecialPower
+        {
+            get { return _specialPower; }
+            set
+            {
+                if (_specialPower != value)
+                {
+                    _specialPower = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
 
         public CgodModel()
@@ -154,6 +146,7 @@ miracle0. / miracle1.
             ClearAbilityBonuses();
             ClearFoodBonuses();
             ClearSpecialFoodBonuses();
+            ClearMiracles();
         }
 
 
@@ -194,6 +187,16 @@ miracle0. / miracle1.
             for (int i = 0; i < 8; ++i)
             {
                 SpecialFoodBonuses.Add(new AbilityBonusModel(150));
+            }
+        }
+
+
+        public void ClearMiracles()
+        {
+            Miracles.Clear();
+            for (int i = 0; i < 2; ++i)
+            {
+                Miracles.Add(new MiracleModel());
             }
         }
     }
