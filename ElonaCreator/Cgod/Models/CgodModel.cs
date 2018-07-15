@@ -18,10 +18,6 @@ namespace ElonaCreator
         #endregion
 
 
-        public string Miracle0;
-        public string Miracle1;
-
-
 
         private string _authorJapanese = "";
         public string AuthorJapanese
@@ -124,6 +120,7 @@ namespace ElonaCreator
         public ObservableCollection<AbilityBonusModel> AbilityBonuses { get; set; } = new ObservableCollection<AbilityBonusModel>();
         public ObservableCollection<AbilityBonusModel> FoodBonuses { get; set; } = new ObservableCollection<AbilityBonusModel>();
         public ObservableCollection<AbilityBonusModel> SpecialFoodBonuses { get; set; } = new ObservableCollection<AbilityBonusModel>();
+        public ObservableCollection<MiracleModel> Miracles { get; set; } = new ObservableCollection<MiracleModel>();
 
 
 
@@ -149,6 +146,7 @@ namespace ElonaCreator
             ClearAbilityBonuses();
             ClearFoodBonuses();
             ClearSpecialFoodBonuses();
+            ClearMiracles();
         }
 
 
@@ -189,6 +187,16 @@ namespace ElonaCreator
             for (int i = 0; i < 8; ++i)
             {
                 SpecialFoodBonuses.Add(new AbilityBonusModel(150));
+            }
+        }
+
+
+        public void ClearMiracles()
+        {
+            Miracles.Clear();
+            for (int i = 0; i < 2; ++i)
+            {
+                Miracles.Add(new MiracleModel());
             }
         }
     }
