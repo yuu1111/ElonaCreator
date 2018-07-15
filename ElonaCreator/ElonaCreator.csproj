@@ -54,38 +54,38 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AbilityBonusModel.cs" />
-    <Compile Include="BasicAttributeTable.cs" />
-    <Compile Include="CgodView.xaml.cs">
+    <Compile Include="Cgod\Models\AbilityBonusModel.cs" />
+    <Compile Include="Cgod\Models\BasicAttributeTable.cs" />
+    <Compile Include="Cgod\Views\CgodView.xaml.cs">
       <DependentUpon>CgodView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CgodViewModel.cs" />
-    <Compile Include="ChooseAbilityBonusDialog.xaml.cs">
+    <Compile Include="Cgod\ViewModels\CgodViewModel.cs" />
+    <Compile Include="Cgod\Views\ChooseAbilityBonusDialog.xaml.cs">
       <DependentUpon>ChooseAbilityBonusDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ChooseAbilityBonusViewModel.cs" />
-    <Compile Include="ChooseOfferingDialog.xaml.cs">
+    <Compile Include="Cgod\ViewModels\ChooseAbilityBonusViewModel.cs" />
+    <Compile Include="Cgod\Views\ChooseOfferingDialog.xaml.cs">
       <DependentUpon>ChooseOfferingDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ChooseOfferingViewModel.cs" />
-    <Compile Include="Int2StringConverter.cs" />
-    <Compile Include="ItemCategoryTable.cs" />
-    <Compile Include="ItemIdTable.cs" />
-    <Compile Include="ItemSubcategoryTable.cs" />
-    <Compile Include="OfferingModel.cs" />
-    <Compile Include="ResistanceTable.cs" />
-    <Compile Include="SkillTable.cs" />
-    <Compile Include="SpellTable.cs" />
+    <Compile Include="Cgod\ViewModels\ChooseOfferingViewModel.cs" />
+    <Compile Include="Cgod\Int2StringConverter.cs" />
+    <Compile Include="Cgod\Models\ItemCategoryTable.cs" />
+    <Compile Include="Cgod\Models\ItemIdTable.cs" />
+    <Compile Include="Cgod\Models\ItemSubcategoryTable.cs" />
+    <Compile Include="Cgod\Models\OfferingModel.cs" />
+    <Compile Include="Cgod\Models\ResistanceTable.cs" />
+    <Compile Include="Cgod\Models\SkillTable.cs" />
+    <Compile Include="Cgod\Models\SpellTable.cs" />
     <Compile Include="ViewModelBase.cs" />
-    <Page Include="CgodView.xaml">
+    <Page Include="Cgod\Views\CgodView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ChooseAbilityBonusDialog.xaml">
+    <Page Include="Cgod\Views\ChooseAbilityBonusDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ChooseOfferingDialog.xaml">
+    <Page Include="Cgod\Views\ChooseOfferingDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -97,7 +97,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CgodModel.cs" />
+    <Compile Include="Cgod\Models\CgodModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
