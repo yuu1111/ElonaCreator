@@ -35,8 +35,6 @@ specialfoodbonus.
 miracle0. / miracle1.
 */
 
-        public string SpecialPower;
-        public string SpecialPowerAlias;
         public string FoodBonus;
         public string SpecialFoodBonus;
         public string Miracle0;
@@ -146,6 +144,22 @@ miracle0. / miracle1.
         public ObservableCollection<AbilityBonusModel> FoodBonuses { get; set; } = new ObservableCollection<AbilityBonusModel>();
         public ObservableCollection<AbilityBonusModel> SpecialFoodBonuses { get; set; } = new ObservableCollection<AbilityBonusModel>();
 
+
+
+
+        private SpecialPowerModel _specialPower = new SpecialPowerModel();
+        public SpecialPowerModel SpecialPower
+        {
+            get { return _specialPower; }
+            set
+            {
+                if (_specialPower != value)
+                {
+                    _specialPower = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
 
         public CgodModel()
