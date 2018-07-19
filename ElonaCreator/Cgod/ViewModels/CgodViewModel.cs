@@ -73,6 +73,7 @@ namespace ElonaCreator
         public ICommand EditOffering { get; private set; }
         public ICommand ClearAbilityBonuses { get; private set; }
         public ICommand EditAbilityBonus { get; private set; }
+        public ICommand EditSpecialPower { get; private set; }
 
 
         public CgodViewModel()
@@ -98,6 +99,12 @@ namespace ElonaCreator
             EditAbilityBonus = CreateCommand(offering =>
             {
                 new ChooseAbilityBonusDialog().ShowDialog();
+            });
+
+
+            EditSpecialPower = CreateCommand(offering =>
+            {
+                new ChooseSpecialPowerDialog().ShowDialog();
             });
         }
     }

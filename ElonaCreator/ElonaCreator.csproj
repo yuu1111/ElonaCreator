@@ -56,8 +56,12 @@
     </ApplicationDefinition>
     <Compile Include="Cgod\Models\AbilityBonusModel.cs" />
     <Compile Include="Cgod\Models\BasicAttributeTable.cs" />
+    <Compile Include="Cgod\Models\BitFlagTable.cs" />
+    <Compile Include="Cgod\Models\EnchantmentTable.cs" />
     <Compile Include="Cgod\Models\MiracleModel.cs" />
     <Compile Include="Cgod\Models\SpecialPowerModel.cs" />
+    <Compile Include="Cgod\Models\SpecialActionTable.cs" />
+    <Compile Include="Cgod\ViewModels\ChooseSpecialPowerViewModel.cs" />
     <Compile Include="Cgod\Views\CgodView.xaml.cs">
       <DependentUpon>CgodView.xaml</DependentUpon>
     </Compile>
@@ -78,6 +82,9 @@
     <Compile Include="Cgod\Models\ResistanceTable.cs" />
     <Compile Include="Cgod\Models\SkillTable.cs" />
     <Compile Include="Cgod\Models\SpellTable.cs" />
+    <Compile Include="Cgod\Views\ChooseSpecialPowerDialog.xaml.cs">
+      <DependentUpon>ChooseSpecialPowerDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModelBase.cs" />
     <Page Include="Cgod\Views\CgodView.xaml">
       <SubType>Designer</SubType>
@@ -88,6 +95,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Cgod\Views\ChooseOfferingDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Cgod\Views\ChooseSpecialPowerDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
