@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -126,6 +127,8 @@ namespace ElonaCreator
 
 
         private SpecialPowerModel _specialPower = new SpecialPowerModel();
+        private string fileName;
+
         public SpecialPowerModel SpecialPower
         {
             get { return _specialPower; }
@@ -147,6 +150,12 @@ namespace ElonaCreator
             ClearFoodBonuses();
             ClearSpecialFoodBonuses();
             ClearMiracles();
+        }
+
+
+        public CgodModel(string fileName)
+        {
+            throw new NotImplementedException();
         }
 
 
@@ -198,6 +207,12 @@ namespace ElonaCreator
             {
                 Miracles.Add(new MiracleModel());
             }
+        }
+
+
+        public void Save(string fileName)
+        {
+            throw new NotImplementedException();
         }
     }
 }
