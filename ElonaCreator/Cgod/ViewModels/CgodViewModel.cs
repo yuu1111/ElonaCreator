@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Win32;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 
@@ -74,6 +75,9 @@ namespace ElonaCreator
         public ICommand ClearAbilityBonuses { get; private set; }
         public ICommand EditAbilityBonus { get; private set; }
         public ICommand EditSpecialPower { get; private set; }
+        public ICommand FileNew { get; private set; }
+        public ICommand FileOpen { get; private set; }
+        public ICommand FileSave { get; private set; }
 
 
         public CgodViewModel()
@@ -105,6 +109,36 @@ namespace ElonaCreator
             EditSpecialPower = CreateCommand(offering =>
             {
                 new ChooseSpecialPowerDialog().ShowDialog();
+            });
+
+
+            FileNew = CreateCommand(_ =>
+            {
+                Cgod = new CgodModel();
+            });
+
+
+            FileOpen = CreateCommand(_ =>
+            {
+                var dialog = new OpenFileDialog();
+                dialog.Title = "Open file";
+                dialog.Filter = "custom god files|*.txt";
+                if (dialog.ShowDialog() == true)
+                {
+                    Cgod = new CgodModel(dialog.FileName);
+                }
+            });
+
+
+            FileSave = CreateCommand(_ =>
+            {
+                var dialog = new SaveFileDialog();
+                dialog.Title = "Save file";
+                dialog.Filter = "custom god files|*.txt";
+                if (dialog.ShowDialog() == true)
+                {
+                    Cgod.Save(dialog.FileName);
+                }
             });
         }
     }

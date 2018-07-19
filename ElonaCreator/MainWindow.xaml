@@ -6,8 +6,25 @@
         xmlns:local="clr-namespace:ElonaCreator"
         mc:Ignorable="d"
         Title="Elona Creator" Height="450" Width="800">
+    <Window.InputBindings>
+        <KeyBinding Gesture="Ctrl+N" Command="{Binding DataContext.FileNew, ElementName=cgodView}"/>
+        <KeyBinding Gesture="Ctrl+O" Command="{Binding DataContext.FileOpen, ElementName=cgodView}"/>
+        <KeyBinding Gesture="Ctrl+S" Command="{Binding DataContext.FileSave, ElementName=cgodView}"/>
+    </Window.InputBindings>
     <Grid>
-        <local:CgodView HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Menu>
+            <MenuItem Header="File(_F)">
+                <MenuItem Header="New" InputGestureText="Ctrl+N" Command="{Binding DataContext.FileNew, ElementName=cgodView}"/>
+                <MenuItem Header="Open..." InputGestureText="Ctrl+O" Command="{Binding DataContext.FileOpen, ElementName=cgodView}"/>
+                <MenuItem Header="Save As..." InputGestureText="Ctrl+S" Command="{Binding DataContext.FileSave, ElementName=cgodView}"/>
+                <Separator/>
+                <MenuItem Header="Exit"/>
+            </MenuItem>
+        </Menu>
+        <local:CgodView x:Name="cgodView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1"/>
     </Grid>
 </Window>
