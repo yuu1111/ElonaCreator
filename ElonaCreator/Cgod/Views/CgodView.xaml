@@ -173,9 +173,33 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Special Power">
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Text="The special power that gets available during you believe in the god. You can specify special actions, enchantment's effect, and other flags."></TextBlock>
+                    <Grid Margin="0,20,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Content="Alias(Japanese)" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Top"/>
+                        <TextBox HorizontalAlignment="Left" Height="auto" Margin="60,0,0,0" TextWrapping="Wrap" Text="{Binding Cgod.SpecialPower.AliasJapanese, Mode=TwoWay}" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+                        <Label Content="Alias(English)" Grid.Row="2" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Top"/>
+                        <TextBox HorizontalAlignment="Left" Height="auto" Margin="60,0,0,0" TextWrapping="Wrap" Text="{Binding Cgod.SpecialPower.AliasEnglish, Mode=TwoWay}" VerticalAlignment="Top" Width="120" Grid.Row="3"/>
+                        <Label Content="Type" Grid.Row="4" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Top"/>
+                        <Button HorizontalAlignment="Left" Height="auto" Margin="60,0,0,0" Content="{Binding Cgod.SpecialPower.Text}" VerticalAlignment="Top" Width="120" Grid.Row="5" Command="{Binding EditSpecialPower}"/>
+                        <Label Content="Power" Grid.Row="6" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Top"/>
+                        <TextBox Grid.Row="7" HorizontalAlignment="Left" Height="auto" Margin="60,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Cgod.SpecialPower.PowerExpression}"/>
+                    </Grid>
+                </DockPanel>
             </TabItem>
             <TabItem Header="Text">
             </TabItem>
         </TabControl>
     </Grid>
 </UserControl>
+
